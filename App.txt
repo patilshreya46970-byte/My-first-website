@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduUniversity - College Application Portal</title>
+    <style>
+        :root { --primary: #0055a4; --secondary: #2c3e50; --bg: #f4f7f6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background-color: var(--bg); padding: 20px; }
+        header { background-color: var(--primary); color: white; text-align: center; padding: 1.5rem; border-radius: 8px; margin-bottom: 20px; }
+        .container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        h2 { color: var(--secondary); margin-bottom: 15px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        button { width: 100%; padding: 10px; background: var(--primary); color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .success-msg { display: none; background: #d4edda; color: #155724; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <header><h1>EduUniversity</h1></header>
+    <div class="success-msg" id="successMessage">Application Submitted!</div>
+    <div class="container">
+        <main class="card">
+            <h2>Application Form</h2>
+            <form id="admissionForm">
+                <div class="form-group"><label>Full Name</label><input type="text" required></div>
+                <div class="form-group"><label>Major</label><select><option>CS</option><option>Business</option></select></div>
+                <button type="submit">Submit</button>
+            </form>
+        </main>
+        <aside class="card"><h2>Status</h2><p id="appStatus">Not Submitted</p></aside>
+    </div>
+    <script>
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('appStatus').innerText = 'Under Review';
+        });
+    </script>
+</body>
+</html>
